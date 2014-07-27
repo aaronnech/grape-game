@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
 	<head>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 	</head>
 	<body>
 		<h1>Grapes</h1>
 		<div id="grapes">
 			<div id="game-grapes" data-bind="foreach: grapes">
+        <div class="grape" data-bind="css: grapeStyling, click: onClick"></div>
 			</div>
 		</div>
 
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script src="js/knockout-3.1.0.js"></script>
+    <script src="js/model.grape.js"></script>
 		<script src="js/viewmodel.grapes.js"></script>
 		<script src="js/init.js"></script>
 	</body>
