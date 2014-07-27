@@ -16,13 +16,28 @@ function Grape(index) {
   };
   self.isNeighbor = function(grape) {
     var i = grape.getIndex();
-    if (i == 4 || i == 
+    
   };
   self.state = new ko.observable(GRAPE_STATE.ACTIVE);
   self.onClick = function() {
     self.state(GRAPE_STATE.INACTIVE);
-    vm.selectionMade();
   };
+  self.onDown = function() {
+    self.state(GRAPE_STATE.SELECTED);
+    vm.mouseDown = true;
+  }
+  self.onOver = function() {
+    if (vm.mouseDown) {
+      self.state(GRAPE_STATE.SELECTED);
+    }
+  }
+  self.onUp = function() {
+    if (vm.mouseDown) {
+      vm.mouseDown = false;
+      //make all grapes with state selected be inactive
+      vm.selectionMade();
+    }
+  }
   self.grapeStyling = ko.computed(function() {
     var style = "";
     switch(self.state()) {
